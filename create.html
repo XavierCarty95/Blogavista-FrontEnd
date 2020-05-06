@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-wrapper red">
+          <a href="#" class="brand-logo">Blogavista</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="index.html">Blog</a></li>
+            <li><a href="authors.html">Authors</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      
+      <div id ="create" class = container>
+        <h2 > Create Blog </h2>
+      <div class="row">
+        <!-- <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="input_text" name = "author" type="text" data-length="10">
+              <label for="input_text">Author</label>
+            </div> -->
+          <!-- </div> -->
+        <div class="row">
+        <form id = "create-form" class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+                  <input id="input_text" name = "author" type="text" data-length="10">
+                  <label for="input_text">Author</label>
+            </div>
+         </div>
+        <div class="row">
+            <div class="input-field col s6">
+              <input id="input_text" name = "image" type="text" data-length="10">
+              <label for="input_text">Image_url</label>
+            </div>
+       </div>
+        <div class="row">
+            <div class="input-field col s6">
+              <input id="input_text" name="title" type="text" data-length="10">
+              <label for="input_text">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+              <input id="input_text" name="description" type="text" data-length="10">
+              <label for="input_text">Description</label>
+            </div>
+        </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea2" name="bio" class="materialize-textarea" data-length="120"></textarea>
+              <label for="textarea2">Bio</label>
+            </div>
+          </div>
+             <button class="btn waves-effect waves-light" type="submit" name="action">
+             <i class="material-icons center-align"> Create</i>
+             </button>
+          
+        </form>
+      </div>
+    </div>        
+
+</body>
+</html>

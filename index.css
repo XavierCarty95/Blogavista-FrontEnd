@@ -1,0 +1,39 @@
+#create {
+
+margin-top: 200px;
+}
+
+#post-text {
+    font-size: 12px;
+    color: grey;
+}
+
+#authors {
+    font-size: 25px;
+}
+
+.brand-logo {
+    margin-left: 20px;
+}
+
+img {
+    border-style: none;
+    display: block;
+    margin-top: 20px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.card-contain {
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+}
+
+hr {
+    
+    border: 5px dashed;
+
+}
