@@ -1,4 +1,5 @@
 let formCreate = document.querySelector("#create-form")
+let divCreated = document.getElementById("created")
 
 formCreate.addEventListener("submit" , function(evt){
    evt.preventDefault()
@@ -8,6 +9,15 @@ formCreate.addEventListener("submit" , function(evt){
    let description = evt.target["description"].value
    let postBio =  evt.target["bio"].value
     formCreate.reset()
+
+    divCreated.innerText = "Your Post has been created!"
+     setTimeout(function () {
+        document.getElementById('created').style.display='none';
+    }, 3000);
+     
+     setTimeout(function () {
+        window.location.reload()
+    }, 4000);
      
     fetch("http://localhost:3000/authors",{
 
@@ -67,7 +77,7 @@ formCreate.addEventListener("submit" , function(evt){
                      
                    posts = response.posts
                    console.log(response)
-                     
+                    
                  
              })
          })

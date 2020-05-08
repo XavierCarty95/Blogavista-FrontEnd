@@ -18,19 +18,29 @@ fetch("http://localhost:3000/authors")
 
 
 function renderHTML(authors) {
-
+console.log(authors)
 let div = document.createElement("div")
 div.classList.add("list-contain")
+
+let image = document.createElement("img")
+image.classList.add("authors-img")
+   image.src = authors.image_url
 
  let li = document.createElement("li")
  li.innerText = authors.name
  li.classList.add("list")
 
+
+
  let p = document.createElement("p")
  p.id = "post-text"
- p.innerText = `${authors.posts.length} post`
 
- div.append(li , p)
+ if(authors.posts.length == 1){
+ p.innerText = `${authors.posts.length} post`
+ } else {
+    p.innerText = `${authors.posts.length} posts`
+ }
+ div.append(image , li , p)
  authorsList.append(div )
  
 
@@ -50,25 +60,40 @@ div.classList.add("list-contain")
 
 function authorsPost(authors ,container){
    authorsList.remove()
+   
+//    let image = document.createElement("img")
+//    image.classList.add("main-img")
+//    image.src = authors.image_url
    console.log("hello")
    listTitle.innerText = `${authors.name} Post's`
-   let p = document.createElement("p")
+   
+   authors.posts.forEach(element => {
+    let image = document.createElement("img")
+    let p = document.createElement("p")
    let h2 = document.createElement("h2")
    h2.classList.add("center-align")
    let ul = document.createElement("ul")
    ul.classList.add("li-display")
-   
-   authors.posts.forEach(element => {
+   let h3 = document.createElement("h3")
+   h3.innerText = "Comments"
+    image.classList.add("main-img")
+    image.src = authors.image_url
        h2.innerText = `Title:  ${element.title}`
        p.innerText =  element.bio
+       let span = document.createElement("span")
+       span.innerText = `${element.likes} likes`
+       span.style.color = "grey"
+       span.style.fontStyle = "italic"
+       
        element.comments.forEach(com => {
            console.log(com.comment)
            ul.innerHTML += `<li> ${com.comment} </li>`
        })
-
+       container.append(image ,h2 , p , span, h3 , ul)
+        
    })
     
-   container.append(h2 , p , ul)
+   
         
          
 

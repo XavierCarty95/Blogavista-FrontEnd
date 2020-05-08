@@ -15,13 +15,14 @@ fetch("http://localhost:3000/posts")
 
 function renderBlog(blogResp){
 
-console.log(container)
+    console.log(container)
 
 
   let div = document.createElement("div")
   div.classList.add("card-contain")
 
    let image = document.createElement("img")
+   image.classList.add("img")
    image.src = blogResp.author.image_url
 
    let h2 = document.createElement("h2")
@@ -57,18 +58,8 @@ console.log(container)
    
    let ul = document.createElement("ul")
    ul.className = "comments"
- 
-
    
 
-   blogResp.comments.forEach((resp) => {
-    let li = document.createElement("li")
-    li.innerText = resp.comment
-    ul.append(li)
-    
-
-   })
-   
    let hr = document.createElement("hr")
    hr
 
@@ -76,13 +67,49 @@ console.log(container)
    div.append(image , h2 , h5 ,datePost, p , span , form ,h6 , ul ,hr )
    container.append(div)
    console.log(blogResp.author.id)
-
-  
+   
     
+   
+   blogResp.comments.forEach((resp) => {
+    
+    let li = document.createElement("li")
+    li.innerText = resp.comment
+    let button = document.createElement("button")
+    button.innerText = 'x'
+    button.classList.add("that-btn")
+    li.append(button)
+    ul.append(li)
+    let buttons = li.querySelector(".that-btn")
+    blogResp.comments.forEach((resp) => {
+        buttons.addEventListener("click" , function(evt){
+        console.log(evt.target)
+        console.log(resp.id)
+        fetch(`http://localhost:3000/comments/${resp.id}`, {
+
+             method: "DELETE"
+
+
+        })
+        .then(r => r.json())
+        .then((response) => {
+
+            li.remove()
+           console.log(response)
+
+        })
+
+
+     })
+
+    })
+   
+})
+   
    let formContain = div.querySelector(".form-comment")
 
  
    formContain.addEventListener("submit" , (e) => {
+        
         e.preventDefault()
         let commentResponse = e.target["comment"].value
         console.log(commentResponse)
@@ -103,24 +130,78 @@ console.log(container)
         .then(r => r.json())
         .then(response => {
             
+            console.log(response)
             blogResp.comments.push(response)
-            //toy.likes = updatedToy.likes
+
     
             let li = document.createElement("li")
             li.innerText = response.comment
+            let button = document.createElement("button")
+            button.classList.add("that-btn")
+            button.innerText = 'x'
+            li.append(button)
             ul.append(li)
+            let buttons = li.querySelector(".that-btn")
+      
+        
+        blogResp.comments.forEach((resp) => {
+        buttons.addEventListener("click" , function(evt){
+        console.log(evt.target)
+        console.log(resp.id)
+        fetch(`http://localhost:3000/comments/${resp.id}`, {
 
+             method: "DELETE"
+
+
+        })
+        .then(r => r.json())
+        .then((response) => {
+
+            li.remove()
+           console.log(response)
 
         })
 
 
+     })
 
-   })
+    })
+
+ })
+
+    })
+
+   
+   
+    
+
+    // let buttons = li.querySelector(".that-btn")
+      
+    //  buttons.addEventListener("click" , function(evt){
+    //     console.log(evt.target)
+    //     console.log(resp.id)
+    //     fetch(`http://localhost:3000/comments/${resp.id}`, {
+
+    //          method: "DELETE"
+
+
+    //     })
+    //     .then(r => r.json())
+    //     .then((response) => {
+
+    //         li.remove()
+    //        console.log(response)
+
+    //     })
+
+
+    //  })
 
    
 
- 
-   let clickLikes = div.querySelector("span")
+  
+   
+let clickLikes = div.querySelector("span")
 
    clickLikes.addEventListener("click" , (e) => {
           renderLikes(blogResp ,clickLikes)

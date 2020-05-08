@@ -1,6 +1,17 @@
+* {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
 #create {
 
 margin-top: 200px;
+}
+
+#created {
+    font-size: 30px;
+    color: green
 }
 
 #post-text {
@@ -16,7 +27,7 @@ margin-top: 200px;
     margin-left: 20px;
 }
 
-img {
+.img {
     border-style: none;
     display: block;
     margin-top: 20px;
@@ -36,4 +47,43 @@ hr {
     
     border: 5px dashed;
 
+}
+
+blockquote {
+
+ font-size: 20px;
+
+
+}
+
+.span-tag {
+    font-style: italic;
+}
+
+.that-btn {
+
+   margin-left: 5px;
+
+}
+
+
+.list:hover {
+    color: red;
+}
+
+.authors-img {
+    display:block;
+    margin:auto;
+    border-style: none;
+    height: 70px;
+    border-radius: 50%;
+
+}
+
+.main-img {
+    display:block;
+    margin:auto;
+    border-style: none;
+    height: 250px;
+    border-radius: 50%;
 }
