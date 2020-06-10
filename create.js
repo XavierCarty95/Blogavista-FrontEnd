@@ -1,13 +1,15 @@
+alert(config.REACT_APP_API_KEY)
 
 let div = document.querySelector(".quote")
 
-
+var mykey = config.REACT_APP_API_KEY;
+console.log(mykey)
 
 fetch("https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous&count=10", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "andruxnet-random-famous-quotes.p.rapidapi.com",
-		"x-rapidapi-key": "e2a6a5a7a5msh205f51dc28acb98p1ae29ajsn7662dae6283c"
+		"x-rapidapi-key": mykey
 	}
 })
 .then(r => r.json())
